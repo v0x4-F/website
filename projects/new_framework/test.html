@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+	<head>
+		<title>MediaQuery Test</title>
+		<style>
+			body{
+				background-color: #222;
+				color: #DDD;
+			}
+			#result, #content{
+				background-color: #555;
+			}
+			.red{
+				color: #F40;
+			}
+			.purple{
+				color: #F4F;
+			}
+			.blue{
+				color: #04F;
+			}
+		</style>
+		<script>
+			// var mediaQuery896 = matchMedia("(max-width: 896px)");
+
+			// function screenIsWide() {
+			// 	var mq = window.matchMedia("(max-width: 896px)");
+			// 	return mq.matches;
+			// }
+
+			// function screenIsNarrow() {
+			// 	var mq = window.matchMedia("(max-width: 599px)");
+			// 	return mq.matches;
+			// }
+
+			var screenIsWide = window.matchMedia("(max-width: 896px)");
+			var screenIsNarrow = window.matchMedia("(max-width: 599px)");
+			// ウィンドウサイズが変更されても実行されるように
+			screenIsWide.addEventListener("change", handle);
+			screenIsNarrow.addEventListener("change", handle2);
+
+			function handle() {
+				// ウィンドウサイズが896px以下の時
+				document.querySelector("#result").classList.remove(...Element.classList);
+				document.querySelector("#result").classList.add("red");
+				document.querySelector("#contents").classList.remove(...Element.classList);
+				document.querySelector("#contents").classList.add("red");
+				document.querySelector("#contents").innerHTML = "Breakpoint hit (896px)";
+			}
+			function handle2() {
+				// <= 599px
+				document.querySelector("#result").classList.remove(...Element.classList);
+				document.querySelector("#result").classList.add("purple");
+				document.querySelector("#contents").classList.remove(...Element.classList);
+				document.querySelector("#contents").classList.add("purple");
+				document.querySelector("#contents").innerHTML = "Breakpoint hit (599px)";
+			}
+			function handle3() {
+				// それ以外
+				document.querySelector("#result").classList.remove(...Element.classList);
+				document.querySelector("#contents").classList.remove(...Element.classList);
+				document.querySelector("#contents").innerHTML = "No hit Breakpoint";
+			
+
+			// ページが読み込まれた時に実行
+			// handle(mediaQuery896);
+		</script>
+	</head>
+	<body>
+		<div id="result">
+			<h1>MediaQuery Test</h1>
+			<p id="content">No hit Breakpoint</p>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,36 @@
+@media screen and (max-width: 629px) {
+	.nav-wrapper {
+		justify-content: space-around;
+	}
+	#logo.logo-small {
+		display: block;
+		width: 100%;
+	}
+	ul.navmenu {
+		margin-top: .5rem;
+	}
+	ul.navmenu ul {
+		min-width: initial;
+		width: 100%
+	}
+	ul.navmenu li:hover > ul > li {
+		height: 3rem;
+		font-size: 1.25rem;
+	}
+	ul.navmenu li:hover > ul > li * {
+		min-width: initial;
+		padding: inherit;
+		width: 100%;
+	}
+	/* グリッドは1列にしとくので後はjavascriptで要素ごと動かせ */
+	.gallery {
+		grid-template-columns: minmax(230px, 460px);
+	}
+	/* と思ったけどdisplay:contents;でdiv壊すとGrid並び替えできるから必殺超人力並び替えする */
+	.gallery > #col1,
+	.gallery > #col2 {
+		display: contents;
+	}
+	.gallery > * :nth-child(3) { order: 2; }
+	.gallery > * :nth-child(2) { order: 3; }
+}
